@@ -17,9 +17,13 @@
             "Hos\\Plugin\\UglifyJS\\": "src/"
         }
     },
+		"package": [
+			"ruby",
+			"build-base",
+			"libffi-dev"
+		],
 		"post-install": [
-			"apk add ruby build-base libffi-dev",
-			"npm install uglify-js"
+			"npm install -g uglify-js"
 		],
 		"events": {
 			"generate": {
