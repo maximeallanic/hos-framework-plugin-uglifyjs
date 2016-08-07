@@ -1,7 +1,7 @@
 {
-    "name": "hos/plugin-twig-framework",
-    "description": "Twig Plugin Framework for Fast Developpement for PHP",
-    "keywords": [ "daehl", "hos", "framework", "twig" ],
+    "name": "hos/plugin-uglifyjs",
+    "description": "UglifyJS Plugin Framework for Fast Developpement for PHP",
+    "keywords": [ "daehl", "hos", "framework", "js", "uglify-js" ],
     "homepage": "https://github.com/daehl/hos-framework",
     "type": "library",
     "license": "CC0 1.0",
@@ -14,14 +14,17 @@
     ],
     "autoload": {
         "psr-4":{
-            "Hos\\": "src/"
+            "Hos\\Plugin\\UglifyJS\\": "src/"
         }
     },
-    "require": {
-         "twig/twig": "v1.13.0"
-    },
-    "config": {
-        "global": {}
-    }
+		"post-install": [
+			"apk add ruby build-base libffi-dev",
+			"npm install uglify-js"
+		],
+		"events": {
+			"generate": {
+					"js": ["Hos\\Plugin\\UglifyJS\\Events::generate"]
+			}
+		}
 
 }
